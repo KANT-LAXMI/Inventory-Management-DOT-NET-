@@ -1,0 +1,97 @@
+﻿@model IEnumerable<InventoryASSIGNMENT.Models.MyItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_item)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.itname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sold_qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cost_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sales_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.manufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MyCategory.cat_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MyUser.fname)
+        </th>
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_item)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.itname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.qty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sold_qty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cost_price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sales_price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.manufacturer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MyCategory.cat_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MyUser.fname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,79 @@
+﻿@model InventoryASSIGNMENT.Models.myCustomer
+
+
+
+@{
+    ViewBag.Title = "Adding New Customer";
+}
+
+
+
+<section class="h-100 bg-dark">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <div class="card card-registration my-4">
+                    <div class="row g-0">
+                        <div class="col-xl-6 d-none d-xl-block">
+                            <img src="~/NewFolder1/salesCustomers.png"
+                                 alt="Sample photo" class="img-fluid"
+                                 style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card-body p-md-5 text-black">
+                                <h2 class="mb-5 text-uppercase">Adding New Customer</h2>
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.fname, htmlAttributes: new { @class = "form-label" })
+                                        @Html.EditorFor(model => model.fname, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                        @Html.ValidationMessageFor(model => model.fname, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.lname, htmlAttributes: new { @class = "form-label" })
+                                        @Html.EditorFor(model => model.lname, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                        @Html.ValidationMessageFor(model => model.lname, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "form-label" })
+                                        @Html.EditorFor(model => model.gender, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                        @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "form-label" })
+                                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.tel, htmlAttributes: new { @class = "form-label" })
+                                        @Html.EditorFor(model => model.tel, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                        @Html.ValidationMessageFor(model => model.tel, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "form-label" })
+                                        @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                        @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.cdate, htmlAttributes: new { @class = "form-label" })
+                                        @Html.EditorFor(model => model.cdate, new { htmlAttributes = new { @class = "form-control form-control-lg", @type = "date" } })
+                                        @Html.ValidationMessageFor(model => model.cdate, "", new { @class = "text-danger" })
+                                    </div>
+                                    <button type="submit" class="btn btn-success btn-lg">Register</button>
+                                }
+                                @Html.ActionLink("Back to List", "Index")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

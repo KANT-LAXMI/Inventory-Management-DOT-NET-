@@ -1,0 +1,106 @@
+﻿@model InventoryASSIGNMENT.Models.MyItem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MyItem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id_item)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_item)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.itname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.itname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sold_qty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sold_qty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cost_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cost_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sales_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sales_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.manufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.manufacturer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MyCategory.cat_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MyCategory.cat_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MyUser.fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MyUser.fname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

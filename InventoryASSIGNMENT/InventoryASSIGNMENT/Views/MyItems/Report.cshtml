@@ -1,0 +1,94 @@
+﻿@model IEnumerable<InventoryASSIGNMENT.Models.MyItem>
+@{
+    ViewBag.Title = "Report";
+    var totalSold = 0;
+    var totalCost = 0;
+    var totalProfit = 0;
+    var profit=0;
+}
+
+<h2>Report</h2>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_item)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.itname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sold_qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cost_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sales_price)
+        </th>
+        <th>
+            <label class="labelclass">Total Cost</label>
+        </th>
+        <th>
+            <label class="labelclass">Total Sold</label>
+        </th>
+        <th>
+            <label class="labelclass">Profit</label>
+        </th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_item)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.itname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sold_qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cost_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sales_price)
+            </td>
+            <td>
+                @(item.sold_qty * item.cost_price)
+                @{
+                    totalCost += (int)(item.sold_qty * (item.cost_price));
+
+                }
+            </td>
+            <td>
+                @(item.sold_qty * item.sales_price)
+                @{
+                    totalSold += (int)(item.sold_qty * (item.sales_price));
+
+                }
+            </td>
+            <td>
+                @(profit=totalSold - totalCost)
+               
+            </td>
+
+        </tr>
+    }
+
+</table>
+<div>Total Profit: @profit </div>

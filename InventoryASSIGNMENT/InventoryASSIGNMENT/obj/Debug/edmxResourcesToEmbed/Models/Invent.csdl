@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="C3IT_DOTNET_TESTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MyCategory">
+    <Key>
+      <PropertyRef Name="cat_id" />
+    </Key>
+    <Property Name="cat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cat_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="cat_comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="cat_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="MyItems" Relationship="Self.FK_Ite_ToTable" FromRole="MyCategory" ToRole="MyItems" />
+  </EntityType>
+  <EntityType Name="myCustomer">
+    <Key>
+      <PropertyRef Name="cus_id" />
+    </Key>
+    <Property Name="cus_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="lname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="gender" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tel" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="cdate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="MyOrders" Relationship="Self.FK_I_Ordr_ToTable_1" FromRole="myCustomer" ToRole="MyOrder" />
+  </EntityType>
+  <EntityType Name="MyItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_item" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="itname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="sold_qty" Type="Double" />
+    <Property Name="cost_price" Type="Double" />
+    <Property Name="sales_price" Type="Double" />
+    <Property Name="manufacturer" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="cat_id" Type="Int32" />
+    <Property Name="user_id" Type="Int32" />
+    <NavigationProperty Name="MyCategory" Relationship="Self.FK_Ite_ToTable" FromRole="MyItems" ToRole="MyCategory" />
+    <NavigationProperty Name="MyUser" Relationship="Self.FK_I_Ites_ToTable" FromRole="MyItems" ToRole="MyUsers" />
+  </EntityType>
+  <EntityType Name="MyOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="order_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="qty" Type="Int32" />
+    <Property Name="order_date" Type="DateTime" Precision="0" />
+    <Property Name="due_date" Type="DateTime" Precision="0" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="cus_id" Type="Int32" />
+    <NavigationProperty Name="myCustomer" Relationship="Self.FK_I_Ordr_ToTable_1" FromRole="MyOrder" ToRole="myCustomer" />
+    <NavigationProperty Name="MyUser" Relationship="Self.FK_I_Orer_ToTable" FromRole="MyOrder" ToRole="MyUsers" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MyUser">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="lname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Attname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="dob" Type="DateTime" Precision="0" />
+    <Property Name="gender" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tel" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="user_level" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="udate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="MyItems" Relationship="Self.FK_I_Ites_ToTable" FromRole="MyUsers" ToRole="MyItems" />
+    <NavigationProperty Name="MyOrders" Relationship="Self.FK_I_Orer_ToTable" FromRole="MyUsers" ToRole="MyOrder" />
+  </EntityType>
+  <Association Name="FK_Ite_ToTable">
+    <End Role="MyCategory" Type="Self.MyCategory" Multiplicity="0..1" />
+    <End Role="MyItems" Type="Self.MyItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MyCategory">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="MyItems">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_I_Ordr_ToTable_1">
+    <End Role="myCustomer" Type="Self.myCustomer" Multiplicity="0..1" />
+    <End Role="MyOrder" Type="Self.MyOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="myCustomer">
+        <PropertyRef Name="cus_id" />
+      </Principal>
+      <Dependent Role="MyOrder">
+        <PropertyRef Name="cus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_I_Ites_ToTable">
+    <End Role="MyUsers" Type="Self.MyUser" Multiplicity="0..1" />
+    <End Role="MyItems" Type="Self.MyItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MyUsers">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="MyItems">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_I_Orer_ToTable">
+    <End Role="MyUsers" Type="Self.MyUser" Multiplicity="0..1" />
+    <End Role="MyOrder" Type="Self.MyOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MyUsers">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="MyOrder">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="C3IT_DOTNET_TESTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MyCategories" EntityType="Self.MyCategory" />
+    <EntitySet Name="myCustomers" EntityType="Self.myCustomer" />
+    <EntitySet Name="MyItems" EntityType="Self.MyItem" />
+    <EntitySet Name="MyOrders" EntityType="Self.MyOrder" />
+    <EntitySet Name="MyUsers" EntityType="Self.MyUser" />
+    <AssociationSet Name="FK_Ite_ToTable" Association="Self.FK_Ite_ToTable">
+      <End Role="MyCategory" EntitySet="MyCategories" />
+      <End Role="MyItems" EntitySet="MyItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_I_Ordr_ToTable_1" Association="Self.FK_I_Ordr_ToTable_1">
+      <End Role="myCustomer" EntitySet="myCustomers" />
+      <End Role="MyOrder" EntitySet="MyOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_I_Ites_ToTable" Association="Self.FK_I_Ites_ToTable">
+      <End Role="MyUsers" EntitySet="MyUsers" />
+      <End Role="MyItems" EntitySet="MyItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_I_Orer_ToTable" Association="Self.FK_I_Orer_ToTable">
+      <End Role="MyUsers" EntitySet="MyUsers" />
+      <End Role="MyOrder" EntitySet="MyOrders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

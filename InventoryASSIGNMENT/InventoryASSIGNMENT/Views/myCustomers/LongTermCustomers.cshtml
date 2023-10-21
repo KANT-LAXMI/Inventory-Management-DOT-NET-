@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "LongTermCustomers";
+}
+
+<h2>LongTermCustomers</h2>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        
+    }
+</style>
+<table style="width:100%">
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Telephone</th>
+            <th>Address</th>
+            <th>Registration Date</th>
+        </tr>
+    </thead>
+    <tbody >
+        @foreach (var customer in Model)
+        {
+            <tr >
+                <td>@customer.cus_id</td>
+                <td>@customer.fname</td>
+                <td>@customer.lname</td>
+                <td>@customer.gender</td>
+                <td>@customer.email</td>
+                <td>@customer.tel</td>
+                <td>@customer.address</td>
+                <td>@customer.cdate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

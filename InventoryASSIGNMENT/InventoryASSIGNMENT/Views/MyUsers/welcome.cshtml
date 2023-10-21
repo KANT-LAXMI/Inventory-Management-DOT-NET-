@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "welcome";
+}
+
+<h2>WELCOME ADMIN !</h2>
+<p>It is our great pleasure to have you on board! A hearty welcome to you!</p>
+<style>
+    .nbox {
+        border: 1px solid #000;
+        margin: 10px;
+        box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.5);
+        filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.5));
+    }
+</style>
+
+<div style="display:flex; height:500px">
+
+
+
+    <div class="nbox" style="padding:10px;width:50%">
+        <h4>Category</h4>
+        <br />
+        <center>
+            <img src="/NewFolder1/categories.jpg" style="max-width: 100%; height: auto;" />
+        </center>
+        <br />
+        <br />
+        <center>
+            @Html.ActionLink("Create Category", "Create", "MyCategories", null, new { @class = "btn btn-success" })
+        </center>
+        <br />
+        <center>
+            @Html.ActionLink("View Category", "Index", "MyCategories", null, new { @class = "btn btn-primary" })
+        </center>
+
+
+
+    </div>
+    <div class="nbox" style="padding:10px;width:50%">
+        <h4>Items</h4>
+        <br />
+        <center>
+            <img src="/NewFolder1/Items.png" style="max-width: 100%; height: auto;" />
+        </center>
+        <br />
+        <center>
+            @Html.ActionLink("Insert Item", "Create", "MyItems", null, new { @class = "btn btn-success" })
+        </center>
+        <br />
+        <center>
+            @Html.ActionLink("View Items", "Index", "MyItems", null, new { @class = "btn btn-primary" })
+        </center>
+
+
+
+    </div>
+    <div class="nbox" style="padding:10px;width:50%">
+        <h4>Users</h4>
+        <br />
+        <center>
+            <img src="/NewFolder1/users.jpg" style="max-width: 100%; height: auto;" />
+        </center>
+        <br />
+        <center>
+            @Html.ActionLink("Add Users", "Create", "MyUsers", null, new { @class = "btn btn-success" })
+        </center>
+        <br />
+        <center>
+            @Html.ActionLink("View Users", "Index", "MyUsers", null, new { @class = "btn btn-primary" })
+        </center>
+
+
+
+    </div>
+    <div class="nbox" style="padding:10px;width:50%">
+        <h4>Reports</h4>
+        <br />
+        <center>
+            <img src="/NewFolder1/report.png" style="max-width: 100%; height: auto;" />
+        </center>
+        <br />
+        <center>
+            @Html.ActionLink("Stock Briefs", "Report", "MyItems", null, new { @class = "btn btn-success" })
+        </center>
+        <br />
+    <center>
+            @Html.ActionLink("Loyal Customers", "LongTermCustomers", "myCustomers", null, new { @class = "btn btn-info" })
+        </center>
+
+
+
+    </div>
+
+</div>
+<br/>
+<br/>
+<p>Date: @DateTime.Now</p>
+@Html.ActionLink("LogOut", "logout", "Myusers", null, new { @class = "btn btn-danger" })
